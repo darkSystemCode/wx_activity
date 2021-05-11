@@ -1,0 +1,4 @@
+<!--pages/index/index.wxml-->
+<view>
+  <button bindtap="getUserProfile"> 获取头像昵称 </button>
+</view>
