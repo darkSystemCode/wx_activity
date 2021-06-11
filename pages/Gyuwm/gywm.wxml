@@ -1,0 +1,11 @@
+<!--pages/Gyuwm/gywm.wxml-->
+<view class="container">
+<text>成员信息:</text>
+<view>黄俊雄：负责后台</view>
+<view>曹应华：负责编写文档</view>
+<view>石亚陆：负责前端页面</view>
+<view>宋银月：负责前端页面</view>
+</view>
+
+
+

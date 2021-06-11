@@ -3,16 +3,22 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/activity/activity",
-    "pages/us/us"
+    "pages/us/us",
+    "pages/myactivity/myactivity",
+    "pages/myMessage/mymessage",
+    "pages/Wdsh/wdsh",
+    "pages/Wdsp/wdsp",
+    "pages/Gyuwm/gywm"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#eeeeee",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "SY",
+    "navigationBarBackgroundColor": "#EEAEEE",
+    "navigationBarTitleText": "志愿者小程序",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "backgroundColor": "#EEAEEE",
     "color": "#000000",
     "selectedColor": "#07C160",
     "list": [

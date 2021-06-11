@@ -1,2 +1,46 @@
 <!--pages/us/us.wxml-->
-<text>pages/us/us.wxml</text>
+<view>
+  <view class="login_container">
+    <view class="img">
+    <!-- <img src="" alt=""> -->
+    </view>
+    <view class="login_btn" bindtap="toLoginAndRegister">
+      <text>
+        登录/注册
+      </text>
+    </view>
+  </view>
+  <view class="item">
+    <view class="sub_item" bindtap="toMyInfo">
+      <icon class="iconfont icon-gerenzhongxin" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+       <view>个人信息</view>
+       <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+    </view>
+
+    <view class="sub_item" bindtap="toMyInfo1">
+      <icon class="iconfont icon-guanyuwomen" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+        <view>我的活动</view>
+        <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+    </view>
+    
+    <view class="sub_item" bindtap="toMywdsh">
+      <icon class="iconfont icon-wodehuodong" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+        <view>我的审核</view>
+        <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+    </view> 
+
+    <view class="sub_item" bindtap="toWdsp">
+      <icon class="iconfont icon-wodehuodong" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+        <view>我的审批</view>
+        <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+    </view> 
+  </view>
+  <view class="item item_top">
+    <view class="sub_item" bindtap="tous">
+        <icon class="iconfont icon-ziyuan203" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+          <view>关于我们</view>
+          <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+    </view>
+  </view>
+  
+</view>

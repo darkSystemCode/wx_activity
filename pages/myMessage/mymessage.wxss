@@ -1,0 +1,22 @@
+/* pages/myMessage/mymessage.wxss */
+.container {
+  margin: 5px 10px 0 10px;
+}
+
+
+.wx_avatar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login_container .img {
+  width: 50px;
+  height: 50px;
+  border-radius:50px;
+  background-color: rgb(194, 194, 194);
+  border: #cfcccc 1px solid;
+}
+.page-section-title{
+  margin:15px 0;
+  border-top: rgb(210, 155, 212) 1px solid;
+}

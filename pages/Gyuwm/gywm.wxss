@@ -1,0 +1,4 @@
+/* pages/Gyuwm/gywm.wxss */
+.container{
+  text-align: center;
+}

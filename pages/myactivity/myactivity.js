@@ -1,4 +1,5 @@
-// pages/us/us.js
+// pages/myactivity/myactivity.js
+const WeChat = getApp()
 Page({
 
   /**
@@ -7,41 +8,16 @@ Page({
   data: {
 
   },
-
-  toMyInfo() {  /*个人信息页面跳转*/
-    wx.redirectTo({
-      url: '../myMessage/mymessage'
-    })
-
-  },
-  toMyInfo1() {    /*我的活动页面跳转*/
+    toMyInfo1() {
     wx.redirectTo({
       url: '../myactivity/myactivity'
     })
-    
   },
-  toMywdsh(){      /*我的审核页面跳转*/
-    wx.redirectTo({
-      url: '../Wdsh/wdsh'
-    })
-  },
-  toWdsp(){       /*我的审批页面跳转*/
-      wx.redirectTo({
-        url: '../Wdsp/wdsp'
-      })
-  },
-  tous() {    /*页面跳转*/
-    wx.redirectTo({
-      url: '../Gyuwm/gywm'
-    })
-
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
   },
 
   /**

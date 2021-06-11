@@ -1,0 +1,58 @@
+<!--pages/myMessage/mymessage.wxml-->
+<view class="container">
+  <view class="login_container">
+    <view class="wx_avatar" bindtap="toLoginAndRegister">
+      <text>
+        头像
+      </text>
+      <view class="img">
+        <!-- <img src="" alt=""> -->
+      </view>
+    </view>
+  </view>
+
+  <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="page-section">
+      <view class="page-section-title">姓名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd" style="margin: 30rpx 0">
+            <input class="weui-input" name="input" placeholder="输入您的姓名" />
+          </view>
+        </view>
+      </view>
+      <view class="page-section page-section-gap">
+        <view class="page-section-title">性别</view>
+        <radio-group name="radio">
+          <label>
+            <radio value="radio1" />男
+          </label>
+          <label>
+            <radio value="radio2" />女
+          </label>
+        </radio-group>
+      </view>
+      <view class="page-section-title">手机号</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd" style="margin: 30rpx 0">
+            <input class="weui-input" name="input" placeholder="输入您的号码" />
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section-title">班级</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd" style="margin: 30rpx 0">
+            <input class="weui-input" name="input" placeholder="输入您的班级" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="btn-area">
+      <button style="margin:10px 0" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

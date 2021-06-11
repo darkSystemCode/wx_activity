@@ -1,40 +1,13 @@
-// pages/us/us.js
+// pages/myMessage/mymessage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
-  },
-
-  toMyInfo() {  /*个人信息页面跳转*/
-    wx.redirectTo({
-      url: '../myMessage/mymessage'
-    })
-
-  },
-  toMyInfo1() {    /*我的活动页面跳转*/
-    wx.redirectTo({
-      url: '../myactivity/myactivity'
-    })
+     
+   
     
-  },
-  toMywdsh(){      /*我的审核页面跳转*/
-    wx.redirectTo({
-      url: '../Wdsh/wdsh'
-    })
-  },
-  toWdsp(){       /*我的审批页面跳转*/
-      wx.redirectTo({
-        url: '../Wdsp/wdsp'
-      })
-  },
-  tous() {    /*页面跳转*/
-    wx.redirectTo({
-      url: '../Gyuwm/gywm'
-    })
-
   },
 
   /**
