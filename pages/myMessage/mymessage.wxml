@@ -1,58 +1,47 @@
 <!--pages/myMessage/mymessage.wxml-->
-<view class="container">
+<view>
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
   <view class="login_container">
     <view class="wx_avatar" bindtap="toLoginAndRegister">
-      <text>
-        头像
-      </text>
-      <view class="img">
-        <!-- <img src="" alt=""> -->
+      <view class="img wechat_img">
+        <image wx:if="{{avatar != null}}" src="{{avatar}}" mode="scaleToFill"></image>
+        <image wx:else src="../../utils/public/us/avatar.png" mode="scaleToFill"></image>
       </view>
+      <text>{{wechat_name == null? "username": wechat_name}}</text>
     </view>
   </view>
 
-  <form catchsubmit="formSubmit" catchreset="formReset">
-    <view class="page-section">
-      <view class="page-section-title">姓名</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__bd" style="margin: 30rpx 0">
-            <input class="weui-input" name="input" placeholder="输入您的姓名" />
-          </view>
-        </view>
-      </view>
-      <view class="page-section page-section-gap">
-        <view class="page-section-title">性别</view>
-        <radio-group name="radio">
-          <label>
-            <radio value="radio1" />男
-          </label>
-          <label>
-            <radio value="radio2" />女
-          </label>
-        </radio-group>
-      </view>
-      <view class="page-section-title">手机号</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__bd" style="margin: 30rpx 0">
-            <input class="weui-input" name="input" placeholder="输入您的号码" />
-          </view>
-        </view>
-      </view>
+  <!--引入WeUI Form做表单数据校验-->
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells title="用户个人信息">
+      <mp-cell show-error prop="username" title="姓名" ext-class="">
+        <input bindinput="inputChange" data-field="username" class="weui-input" maxlength="10" placeholder="请输入您的姓名" value="{{formData.username}}"/>
+      </mp-cell>
 
-      <view class="page-section-title">班级</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__bd" style="margin: 30rpx 0">
-            <input class="weui-input" name="input" placeholder="输入您的班级" />
+      <mp-cell prop="sex" title="性别" ext-class="">
+        <picker bindchange="sexChange" mode="selector" value="{{index}}" range="{{sexArray}}">
+          <view wx:if="{{index ==0?true:false}}" class="picker" style="color:#808080">
+            {{sexArray[index]}}
           </view>
-        </view>
-      </view>
-    </view>
+          <view wx:else class="picker">
+            {{sexArray[index]}}
+          </view>
+        </picker>
+      </mp-cell>
 
-    <view class="btn-area">
-      <button style="margin:10px 0" formType="submit">提交</button>
-    </view>
-  </form>
+      <mp-cell prop="phone" title="手机号码" ext-class="">
+        <input bindinput="inputChange" type="number" show-error data-field="phone" class="weui-input" placeholder="请输入您的手机号码" value="{{formData.phone}}"/>
+      </mp-cell>
+
+      <mp-cell prop="classname" title="班级" ext-class="">
+        <input bindinput="inputChange" show-error data-field="classname" class="weui-input" maxlength="10"
+          placeholder="请输入您的班级" value="{{formData.classname}}"/>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
 </view>

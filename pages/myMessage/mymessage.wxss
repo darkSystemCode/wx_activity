@@ -1,22 +1,46 @@
 /* pages/myMessage/mymessage.wxss */
-.container {
-  margin: 5px 10px 0 10px;
+.login_container {
+  margin: 5px 10px;
 }
 
-
-.wx_avatar {
+.login_container .wx_avatar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.login_container .img {
+/* .login_container .wx_avatar .img {
   width: 50px;
   height: 50px;
   border-radius:50px;
-  background-color: rgb(194, 194, 194);
   border: #cfcccc 1px solid;
 }
-.page-section-title{
-  margin:15px 0;
-  border-top: rgb(210, 155, 212) 1px solid;
+
+.login_container .wx_avatar .img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+} */
+
+.login_container .wx_avatar text {
+  margin-left: 1rem;
+}
+
+.form_item {
+ margin: 10px 0;
+}
+
+.form_item .form_label, .form_item .form_cell, radio-group {
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.form_item .form_cell {
+  height: 40px;
+  line-height: 40px;
+  background-color: #FFFFFF;
+}
+
+.form_item .form_cell .input {
+  transform: translateY(50%);
 }

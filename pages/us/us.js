@@ -1,40 +1,90 @@
 // pages/us/us.js
+const weChat = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    avatar: null, //微信头像
+    login_msg: "登录/注册" //微信昵称
   },
 
-  toMyInfo() {  /*个人信息页面跳转*/
-    wx.redirectTo({
-      url: '../myMessage/mymessage'
+  /**
+   * 登录或者注册接口
+   */
+  getUserProfile() {
+    wx.getUserProfile({
+      desc: '用于完善用户资料',
+      success: info => {
+        console.log(info)
+        //执行登录
+        wx.login({
+            success: res => {
+              if(res.code) {
+                //调用服务器登录接口
+                weChat.request.postRequest({
+                  url: "/login/wx_login",
+                  data: {
+                    code: res.code,
+                    avatar: info.userInfo.avatarUrl,
+                    city: info.userInfo.city,
+                    country: info.userInfo.country,
+                    province: info.userInfo.province,
+                    wechat_name: info.userInfo.nickName
+                  }
+                }).then(res =>{
+                  if(res.code === 200) {
+                    this.setData({
+                      login_msg: res.data.wechat_name,
+                      avatar: res.data.avatar
+                    })
+                    //把用户信息存入Storage缓存中
+                    wx.setStorageSync('userInfo', res.data)
+                  }
+                }).catch(err => {
+                  console.log(err)
+                  wx.showToast({
+                    title: "错误代码：" + res.code +":"+ res.msg,
+                    icon: res.type
+                  })
+                })
+              }
+            }
+        })
+      },
+      fail: err => {
+        console.log(err)
+      }
+    })
+  },
+
+  toInfo() {  /*个人信息页面跳转*/
+    wx.navigateTo({
+      url: '../myMessage/myMessage'
     })
 
   },
-  toMyInfo1() {    /*我的活动页面跳转*/
-    wx.redirectTo({
-      url: '../myactivity/myactivity'
+  toMyActivitys() {    /*我的活动页面跳转*/
+    wx.navigateTo({
+      url: '../myActivity/myActivity'
     })
     
   },
-  toMywdsh(){      /*我的审核页面跳转*/
-    wx.redirectTo({
+  toMyCheck(){      /*我的审核页面跳转*/
+    wx.navigateTo({
       url: '../Wdsh/wdsh'
     })
   },
-  toWdsp(){       /*我的审批页面跳转*/
-      wx.redirectTo({
+  toMyApprove(){       /*我的审批页面跳转*/
+      wx.navigateTo({
         url: '../Wdsp/wdsp'
       })
   },
-  tous() {    /*页面跳转*/
-    wx.redirectTo({
-      url: '../Gyuwm/gywm'
+  toAboutUs() {    /*页面跳转*/
+    wx.navigateTo({
+      url: '../aboutUs/aboutUs'
     })
-
   },
 
   /**

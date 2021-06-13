@@ -1,46 +1,79 @@
 <!--pages/us/us.wxml-->
 <view>
+
+  <!--我的页面avatar部分-->
   <view class="login_container">
-    <view class="img">
-    <!-- <img src="" alt=""> -->
-    </view>
-    <view class="login_btn" bindtap="toLoginAndRegister">
-      <text>
-        登录/注册
-      </text>
+    <image src="../../utils/public/us/banner.png" mode="scaleToFill"></image>
+    <view class="login_box">
+      <view class="wechat_img" style="margin: 0 auto">
+        <image wx:if="{{avatar != null}}" src="{{avatar}}" mode="scaleToFill"></image>
+        <image wx:else src="../../utils/public/us/avatar.png" mode="scaleToFill"></image>
+      </view>
+      <!--点击调起微信授权弹窗-->
+      <view>
+        <button bindtap="getUserProfile" plain="true" style="border: 0">{{login_msg}}</button>
+      </view>
     </view>
   </view>
-  <view class="item">
-    <view class="sub_item" bindtap="toMyInfo">
-      <icon class="iconfont icon-gerenzhongxin" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-       <view>个人信息</view>
-       <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+
+  <!--功能项-->
+  <view class="item_box">
+    <view class="item" bindtap="toMyInfo">
+      <view class="sub_item">
+        <view class="left">
+          <icon class="iconfont icongerenxinxi"></icon>
+        </view>
+        <!--bindtap绑定click事件，点击跳转到相应的页面-->
+        <view class="right" bindtap="toInfo">
+          <view>个人信息</view>
+          <icon class="iconfont iconright"></icon>
+        </view>
+      </view>
     </view>
 
-    <view class="sub_item" bindtap="toMyInfo1">
-      <icon class="iconfont icon-guanyuwomen" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-        <view>我的活动</view>
-        <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-    </view>
-    
-    <view class="sub_item" bindtap="toMywdsh">
-      <icon class="iconfont icon-wodehuodong" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-        <view>我的审核</view>
-        <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-    </view> 
+    <view class="item interval">
+      <view class="sub_item">
+        <view class="left">
+          <icon class="iconfont iconhuodongguanli" style="color: #ff1a1a"></icon>
+        </view>
+        <view class="right border_bottom" bindtap="toMyActivitys">
+          <view>我的活动</view>
+          <icon class="iconfont iconright"></icon>
+        </view>
+      </view>
 
-    <view class="sub_item" bindtap="toWdsp">
-      <icon class="iconfont icon-wodehuodong" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-        <view>我的审批</view>
-        <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
-    </view> 
-  </view>
-  <view class="item item_top">
-    <view class="sub_item" bindtap="tous">
-        <icon class="iconfont icon-ziyuan203" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+      <view class="sub_item">
+        <view class="left">
+          <icon class="iconfont iconshenhe" style="color: #33ff99"></icon>
+        </view>
+        <view class="right border_bottom" bindtap="toMyCheck">
+          <view>我的审核</view>
+          <icon class="iconfont iconright"></icon>
+        </view>
+      </view>
+
+      <view class="sub_item">
+        <view class="left">
+          <icon class="iconfont iconshenpi" style="color: #6666ff"></icon>
+        </view>
+        <view class="right" bindtap="toMyApprove">
+          <view>我的审批</view>
+          <icon class="iconfont iconright"></icon>
+        </view>
+      </view>
+    </view>
+
+    <view class="item interval">
+      <view class="sub_item">
+        <view class="left">
+          <icon class="iconfont iconguanyuwomen" style="color: #4db8ff"></icon>
+        </view>
+        <view class="right" bindtap="toAboutUs">
           <view>关于我们</view>
-          <icon class="iconfont icon-jiantou" style="font-size:20px;"bindtap="TCAddWaste"></icon>
+          <icon class="iconfont iconright"></icon>
+        </view>
+      </view>
     </view>
   </view>
-  
+
 </view>

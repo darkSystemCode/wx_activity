@@ -4,11 +4,11 @@
     "pages/logs/logs",
     "pages/activity/activity",
     "pages/us/us",
-    "pages/myactivity/myactivity",
-    "pages/myMessage/mymessage",
+    "pages/myActivity/myActivity",
+    "pages/myMessage/myMessage",
     "pages/Wdsh/wdsh",
     "pages/Wdsp/wdsp",
-    "pages/Gyuwm/gywm"
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +26,7 @@
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "utils/public/home/home.png",
-        "selectedIconPath": "utils/public/home/selected_home.png"
+        "selectedIconPath": "utils/public/home/sl_home.png"
       },
       {
         "pagePath": "pages/activity/activity",
@@ -42,6 +42,5 @@
       }
     ]
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
