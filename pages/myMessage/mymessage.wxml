@@ -1,5 +1,6 @@
 <!--pages/myMessage/mymessage.wxml-->
 <view>
+  <!--表单校验错误信息提示组件-->
   <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 
   <view class="login_container">

@@ -1,0 +1,132 @@
+<!--pages/addActivty/addActivty.wxml-->
+<view class="img_upload">
+  <!--表单校验错误信息提示组件-->
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
+  <mp-cells>
+    <mp-cell>
+      <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" files="{{files}}" max-count="1" title="图片上传" tips="图片上传提示"></mp-uploader>
+    </mp-cell>
+  </mp-cells>
+  <!--引入WeUI Form做表单数据校验-->
+  <mp-form id="form" rules="{{rules}}" models="{{form}}" ext-class="myForm">
+    <mp-cells title="活动信息">
+      <mp-cell prop="title" show-error title="活动标题" ext-class="">
+        <input bindinput="inputChange" data-field="title" class="weui-input" maxlength="20" placeholder="请输入活动标题"
+          value="{{form.title}}" />
+      </mp-cell>
+
+      <mp-cell prop="content" show-error title="活动内容" ext-class="">
+        <textarea prop="content" bindinput="inputChange" data-field="content" auto-height maxlength="250" value="{{form.content}}" style="width: 100%; height: 24px" placeholder="请输入活动内容"/>
+      </mp-cell>
+
+      <mp-cell prop="start_time" show-error title="开始时间" ext-class="">
+        <input bindtap="showStartDialog" data-field="start_time" class="weui-input" placeholder="请选择开始时间"
+          value="{{form.start_time}}" />
+        <mp-half-screen-dialog show="{{showStartDialog}}" bindclose="startDialogClose">
+          <view slot="title">时期/时间选择器</view>
+          <view slot="desc">
+            <picker-view value="{{startTime}}" bindchange="startTimeChange" indicator-style="height: 50px;"
+              style="width: 100%; height: 200px;">
+              <picker-view-column>
+                <view wx:for="{{years}}" wx:key="{{years}}" style="line-height: 50px; text-align: center;">{{item}}年
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{months}}" wx:key="{{months}}" style="line-height: 50px; text-align: center;">{{item}}月
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{days}}" wx:key="{{days}}" style="line-height: 50px; text-align: center;">{{item}}日
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{hours}}" wx:key="{{hours}}" style="line-height: 50px; text-align: center;">{{item}}时
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{minutes}}" wx:key="{{minutes}}" style="line-height: 50px; text-align: center;">{{item}}分
+                </view>
+              </picker-view-column>
+            </picker-view>
+          </view>
+        </mp-half-screen-dialog>
+      </mp-cell>
+
+      <mp-cell prop="end_time" show-error title="结束时间" ext-class="">
+        <input bindtap="showEndDialog" data-field="start_time" class="weui-input" placeholder="请选择结束时间"
+          value="{{form.end_time}}" />
+        <mp-half-screen-dialog show="{{showEndDialog}}" bindclose="endDialogClose">
+          <view slot="title">时期/时间选择器</view>
+          <view slot="desc">
+            <picker-view value="{{startTime}}" bindchange="endTimeChange" indicator-style="height: 50px;"
+              style="width: 100%; height: 200px;">
+              <picker-view-column>
+                <view wx:for="{{years}}" wx:for-index="index"  wx:key="{{index}}" style="line-height: 50px; text-align: center;">{{item}}年
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{months}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}月
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{days}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}日
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{hours}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}时
+                </view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{minutes}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}分
+                </view>
+              </picker-view-column>
+            </picker-view>
+          </view>
+        </mp-half-screen-dialog>
+      </mp-cell>
+
+      <mp-cell prop="address" show-error title="活动地点" ext-class="">
+        <input bindinput="inputChange" show-error data-field="address" class="weui-input" placeholder="请输入活动地点"
+          value="{{form.address}}" />
+      </mp-cell>
+
+      <mp-cell prop="limit_number" show-error title="上限人数" ext-class="">
+        <input type="number" bindinput="inputChange" show-error data-field="limit_number" class="weui-input" placeholder="请输入上限人数"
+          value="{{form.limit_number}}" />
+      </mp-cell>
+
+      <mp-cell prop="initiator" show-error title="发起人" ext-class="">
+        <input bindinput="inputChange" show-error data-field="initiator" class="weui-input" placeholder="请输入发起人"
+          value="{{form.initiator}}" />
+      </mp-cell>
+ 
+      <mp-cell prop="phone" show-error title="发起人手机号" ext-class="">
+        <input type="number" bindinput="inputChange" show-error data-field="phone" class="weui-input"
+          placeholder="请输入发起人手机号" value="{{form.phone}}" />
+      </mp-cell>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">需要审核</view>
+          <view class="weui-cell__ft">
+            <switch checked="{{form.apply_check}}" bindchange="applyCheckChange" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">允许取消报名</view>
+          <view class="weui-cell__ft">
+            <switch checked="{{form.cancel}}" bindchange="cancelChange" />
+          </view>
+        </view>
+      </view>
+    </mp-cells>
+  </mp-form>
+
+  <view class="weui-btn-area">
+    <button type="primary" bindtap="submitForm">提交</button>
+  </view>
+</view>

@@ -1,1 +1,64 @@
 /* pages/activity/activity.wxss */
+.enti{
+  border-radius: 8px;
+  margin: 15px 10px;
+  padding: 5px;
+  background-color: #FFFFFF;
+}
+.enti .top{
+  width: 100%;
+  height: 90px;
+  display: flex;
+}
+.enti .top .left{
+  width: 30%;
+  height: 90px;
+  border-radius: 5%;
+  margin-right: 3px;
+}
+.enti .top .right{
+  width: 70%;
+  height: 90px;
+  border-radius: 8px;
+}
+
+.enti .top .right .text{
+  word-break: break-all;
+}
+.enti .top .left {
+  width: 30%;
+  height: 90px;
+}
+
+.enti .top .left image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.enti .top .right .wenzi view {
+  font-size: 12px;
+  color: #1a1a1a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.enti .under {
+  text-align: center;
+  border-top: 1px solid #cccccc;
+  margin-top: 5px;
+}
+
+.addBtn {
+  position: fixed;
+  right: 6%;
+  bottom: 6%;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 60px;
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 0 4px 0 #CCCCCC;
+  opacity: 1;
+}

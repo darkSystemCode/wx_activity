@@ -1,0 +1,7 @@
+/* pages/addActivty/addActivty.wxss */
+.upload .weui-uploader__input-box{
+  width: 100%;
+}
+.upload .weui-uploader__hd {
+  text-align: center;
+}
