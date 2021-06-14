@@ -1,5 +1,6 @@
 // pages/activity/activity.js
 const weChat = getApp()
+const util = require("../../utils/checkLogin")
 Page({
   data: {
     activitys: [],
@@ -12,6 +13,14 @@ Page({
       url: '../addActivty/addActivty',
     })
   },
+  //跳转到活动详情页
+  toDetails(e) {
+    if(util.checkLogin()) {
+      wx.navigateTo({
+        url: '../activityDetails/activityDetails?a_id=' + e.currentTarget.dataset.id,
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -21,13 +30,14 @@ Page({
     weChat.request.getRequest({
       url: '/getActivitys?page=' + this.data.page + "&size=" + this.data.size
     }).then(res => {
-      for(let item of res.data) {
-        this.setData({
-          activitys: res.data
-        })
-      }
+      this.setData({
+        activitys: res.data
+      })  
     }).catch(err => {
-      console.log(err)
+      wx.showToast({
+        title: err.msg,
+        icon: err.type
+      })
     })
   },
 

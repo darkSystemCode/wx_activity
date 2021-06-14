@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "活动详情",
+  "usingComponents": {
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-checkbox": "weui-miniprogram/checkbox/checkbox",
+    "mp-icon": "weui-miniprogram/icon/icon"
+  }
+}

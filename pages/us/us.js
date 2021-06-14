@@ -1,5 +1,6 @@
 // pages/us/us.js
 const weChat = getApp()
+const util = require("../../utils/checkLogin")
 Page({
 
   /**
@@ -65,21 +66,27 @@ Page({
     })
 
   },
+  
   toMyActivitys() {    /*我的活动页面跳转*/
-    wx.navigateTo({
-      url: '../myActivity/myActivity'
-    })
-    
+    if(util.checkLogin()) {
+      wx.navigateTo({
+        url: '../myActivity/myActivity'
+      })
+    }
   },
   toMyCheck(){      /*我的审核页面跳转*/
-    wx.navigateTo({
-      url: '../Wdsh/wdsh'
-    })
+    if(util.checkLogin()) {
+      wx.navigateTo({
+        url: '../myChecks/myChecks'
+      })
+    }
   },
   toMyApprove(){       /*我的审批页面跳转*/
+    if(util.checkLogin()) {
       wx.navigateTo({
-        url: '../Wdsp/wdsp'
+        url: '../myApprove/myApprove'
       })
+    }
   },
   toAboutUs() {    /*页面跳转*/
     wx.navigateTo({

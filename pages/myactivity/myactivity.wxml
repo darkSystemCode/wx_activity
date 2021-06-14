@@ -1,24 +1,27 @@
 <!--pages/myactivity/myactivity.wxml-->
-
-
 <view>
-  <view class="enti">
-    <view class="top">
-      <view class="left img" style="left">
-        <image src=""></image>
+  <view wx:for="{{activitys}}" wx:key="index">
+    <view class="enti" bindtap="toDetails" data-id="{{item.a_id}}">
+      <view class="top">
+        <view class="left img" style="left">
+          <image src="{{item.img}}" mode="scaleToFill"></image>
+        </view>
+        <view class="right" style="right">
+          <view>
+            <text>{{item.title}}</text>
+          </view>
+          <view class="wenzi">
+            <view>
+              <text>时间：</text><text>{{item.start_time}}</text>
+            </view>
+            <view>
+              <text>地点：</text><text>{{item.address}}</text>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class="right" style="right">
-        <view>
-          <text>活动标题</text>
-        </view>
-        <view class="wenzi">
-          <view>
-            <text>起止时间：年/月/日/</text><text></text>
-          </view>
-          <view>
-            <text>活动地点：</text><text></text>
-          </view>
-        </view>
+      <view class="under">
+        <text>{{item.check_result}}</text>
       </view>
     </view>
   </view>

@@ -6,10 +6,11 @@
     "pages/us/us",
     "pages/myActivity/myActivity",
     "pages/myMessage/myMessage",
-    "pages/Wdsh/wdsh",
-    "pages/Wdsp/wdsp",
+    "pages/myChecks/myChecks",
+    "pages/myApprove/myApprove",
     "pages/aboutUs/aboutUs",
-    "pages/addActivty/addActivty"
+    "pages/addActivty/addActivty",
+    "pages/activityDetails/activityDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

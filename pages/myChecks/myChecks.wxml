@@ -1,7 +1,6 @@
-<!--pages/activity/activity.wxml-->
 <view>
-  <view wx:for="{{activitys}}" wx:key="index" wx:for-item="item">
-    <view class="enti" bindtap="toDetails" data-id="{{item.a_id}}">
+  <view wx:for="{{activitys}}" wx:key="index">
+    <view class="enti">
       <view class="top">
         <view class="left img" style="left">
           <image src="{{item.img}}" mode="scaleToFill"></image>
@@ -21,12 +20,8 @@
         </view>
       </view>
       <view class="under">
-        <text>{{item.status}}</text>
+        <text>{{item.check_result}}</text>
       </view>
     </view>
-  </view>
-
-  <view class="addBtn" bindtap="toAddActivty">
-    <mp-icon icon="add" color="#94C6F2" size="{{25}}"></mp-icon>
   </view>
 </view>

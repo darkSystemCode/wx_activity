@@ -1,22 +1,32 @@
 // pages/Wdsh/wdsh.js
+const weChat = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
-  },
-  toMyWdsh() {
-    wx.redirectTo({
-      url:'../Wdsh/wdsh'
-    })
+    activitys: [],
+    page: 1,
+    size: 6
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //页面被加载时 初始化数据
+    const u_id = wx.getStorageSync('userInfo').u_id
+    weChat.request.getRequest({
+      url: '/getActivitys?page=' + this.data.page + "&size=" + this.data.size + "&u_id=" + (u_id == null?"":u_id)
+    }).then(res => {
+      this.setData({
+        activitys: res.data
+      }) 
+    }).catch(err => {
+      wx.showToast({
+        title: err.msg,
+        icon: err.type
+      })
+    })
   },
 
   /**

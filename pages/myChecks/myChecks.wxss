@@ -1,4 +1,4 @@
-/* pages/activity/activity.wxss */
+
 .enti{
   border-radius: 8px;
   margin: 15px 10px;
@@ -48,5 +48,3 @@
   border-top: 1px solid #cccccc;
   margin-top: 5px;
 }
-
-

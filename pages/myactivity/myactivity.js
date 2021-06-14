@@ -1,23 +1,33 @@
 // pages/myactivity/myactivity.js
-const WeChat = getApp()
+const weChat = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    activitys: [],
+    page: 1,
+    size: 6
   },
-    toMyInfo1() {
-    wx.redirectTo({
-      url: '../myactivity/myactivity'
+  //跳转到活动详情页
+  toDetails(e) {
+    wx.navigateTo({
+      url: '../activityDetails/activityDetails?a_id=' + e.currentTarget.dataset.id,
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    weChat.request.getRequest({
+      url: '/getMyActivity/' + wx.getStorageSync('userInfo').u_id + "?page=" + this.data.page + "&size=" + this.data.size
+    }).then(res => {
+      this.setData({
+        activitys: res.data
+      })
+    })
   },
 
   /**

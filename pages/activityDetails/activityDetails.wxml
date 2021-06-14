@@ -1,0 +1,51 @@
+<!--pages/activityDetails/activityDetails.wxml-->
+<view>
+  <mp-cells title="活动基本信息" ext-class="my-cells">
+    <mp-cell>
+      <image style="width: 100%;" src="{{activitys.img}}" mode="scaleToFill"></image>
+    </mp-cell>
+    <mp-cell>
+      <text class="title">{{activitys.title}}</text>
+    </mp-cell>
+    <mp-cell>
+      <text class="content" user-select="true">{{activitys.content}}</text>
+    </mp-cell>
+    <mp-cell>
+      <view class="subInfo">
+        <view class="time">
+          <mp-icon icon="time" color="black" size="{{20}}"></mp-icon>
+          <view>
+            <text>时间：</text>
+            <text>{{activitys.start_time}}</text>
+          </view>
+        </view>
+        <view class="address">
+          <mp-icon icon="location" color="black" size="{{20}}"></mp-icon>
+          <view>
+            <text>地点：</text>
+            <text>{{activitys.address}}</text>
+          </view>
+        </view>
+      </view>
+    </mp-cell>
+  </mp-cells>
+
+  <mp-cells title="活动发起人信息">
+    <mp-cell>
+      <view class="userInfo">
+        <view class="avatar">
+          <image wx:if="{{wechat_avatar != ''}}" src="{{wechat_avatar}}"></image>
+          <image wx:else src="../../utils/public/us/avatar.png"></image>
+        </view>
+        <view class="name">
+          <view wx:if="wechat_name != ''">{{wechat_name}}</view>
+          <view>{{activitys.initiator}}</view>
+        </view>
+      </view>
+    </mp-cell>
+  </mp-cells>
+
+  <view class="btn">
+    <button size="default" type="primary" bindtap="applyActivity">立即报名</button>
+  </view>
+</view>

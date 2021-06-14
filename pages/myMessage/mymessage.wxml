@@ -43,6 +43,6 @@
   </mp-form>
 
   <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    <button type="primary" bindtap="submitForm">确定</button>
   </view>
 </view>

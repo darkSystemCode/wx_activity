@@ -29,23 +29,23 @@
             <picker-view value="{{startTime}}" bindchange="startTimeChange" indicator-style="height: 50px;"
               style="width: 100%; height: 200px;">
               <picker-view-column>
-                <view wx:for="{{years}}" wx:key="{{years}}" style="line-height: 50px; text-align: center;">{{item}}年
+                <view wx:for="{{years}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}年
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{months}}" wx:key="{{months}}" style="line-height: 50px; text-align: center;">{{item}}月
+                <view wx:for="{{months}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}月
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{days}}" wx:key="{{days}}" style="line-height: 50px; text-align: center;">{{item}}日
+                <view wx:for="{{days}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}日
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{hours}}" wx:key="{{hours}}" style="line-height: 50px; text-align: center;">{{item}}时
+                <view wx:for="{{hours}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}时
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{minutes}}" wx:key="{{minutes}}" style="line-height: 50px; text-align: center;">{{item}}分
+                <view wx:for="{{minutes}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}分
                 </view>
               </picker-view-column>
             </picker-view>
@@ -62,23 +62,23 @@
             <picker-view value="{{startTime}}" bindchange="endTimeChange" indicator-style="height: 50px;"
               style="width: 100%; height: 200px;">
               <picker-view-column>
-                <view wx:for="{{years}}" wx:for-index="index"  wx:key="{{index}}" style="line-height: 50px; text-align: center;">{{item}}年
+                <view wx:for="{{years}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}年
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{months}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}月
+                <view wx:for="{{months}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}月
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{days}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}日
+                <view wx:for="{{days}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}日
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{hours}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}时
+                <view wx:for="{{hours}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}时
                 </view>
               </picker-view-column>
               <picker-view-column>
-                <view wx:for="{{minutes}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}分
+                <view wx:for="{{minutes}}" wx:key="index" style="line-height: 50px; text-align: center;">{{item}}分
                 </view>
               </picker-view-column>
             </picker-view>

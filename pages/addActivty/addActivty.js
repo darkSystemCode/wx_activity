@@ -42,12 +42,13 @@ Page({
     filesUrl: '',
     startTime: [1, 0, 0, 2, 3], //时间选择器开始定位下标
     flag: false, //判断时间选择器是否触发
+    timeout: 0,  //防抖时间
     form: {
       img: '',
       title: '',
       content: '',
-      start_time: [],
-      end_time: [],
+      start_time: '',
+      end_time: '',
       address: '',
       limit_number: '',
       initiator: '',
@@ -72,7 +73,13 @@ Page({
       rules: { required: true, message: '地址不能为空' }
     }, {
       name: 'limit_number',
-      rules: { required: true, message: '上限人数不能为空' }
+      rules: [{ required: true, message: '上限人数不能为空' }, {
+        validator: (rule, value, param, models) => {
+          if (!/^[0-9]*$/.test(value)) {
+            return "上限人数只能输入数字"
+          }
+        }
+      }]
     }, {
       name: 'initiator',
       rules: { required: true, message: '发起人不能为空' }
@@ -193,12 +200,12 @@ Page({
     const day = days[array[2]]
     const hour = hours[array[3]]
     const minute = minutes[array[4]]
-    if(state == 1) {
+    if (state == 1) {
       this.setData({
         'form.start_time': year + '/' + month + '/' + day + '/' + " " + hour + ':' + minute,
         flag: false
       })
-    } else if(state == 2) {
+    } else if (state == 2) {
       this.setData({
         'form.end_time': year + '/' + month + '/' + day + '/' + " " + hour + ':' + minute,
         flag: false
@@ -243,37 +250,55 @@ Page({
             error: errors[firstError[0]].message
           })
         }
-      } else {
-        //通过校验 提交表单数据到服务器
-        if(this.data.filesUrl[0] != null || this.data.filesUrl[0] !='') {
-          this.setData({
-            'form.img': this.data.filesUrl[0]
+        return
+      }
+      //通过校验 提交表单数据到服务器
+      if (this.data.filesUrl === "" || this.data.filesUrl[0] === "") {
+        wx.showModal({
+          title: '来自表单的提示',
+          content: '请先上传图片！',
+          showCancel: false
+        })
+        return
+      }
+      this.setData({
+        'form.img': this.data.filesUrl[0]
+      })
+      //校验发起人是否有效 - 无效提示发起人个人信息要完整
+      weChat.request.getRequest({
+        url: '/checkUser/' + this.data.form.initiator
+      }).then(res => {
+        if (res.code == 500 || res.type == 'error') {
+          wx.showModal({
+            title: '温馨提示',
+            content: '发起人无效，请确保发起人个人信息完整',
+            showCancel: false
           })
+        }
+        if (res.code === 200) {
+          //提交活动表单到服务器
           weChat.request.postRequest({
             url: '/setActivity',
             data: this.data.form
-          }).then(res =>{
+          }).then(res => {
             wx.showToast({
               title: res.msg,
               icon: res.type
             })
-            if(res.code == 200) {
+            if (res.code == 200) {
               //关闭当前页面 跳转到上一页面 详见https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html
               wx.navigateBack({
-                delta: getCurrentPages().length-1,
+                delta: getCurrentPages().length - 1,
               })
             }
           }).catch(err => {
-            console.log(err)
-          })
-        } else {
-          wx.showModal({
-            title: '来自表单的提示',
-            content: '请先上传图片！',
-            showCancel: false
+            wx.showToast({
+              title: err.msg,
+              icon: err.type
+            })
           })
         }
-      }
+      })
     })
   },
 
