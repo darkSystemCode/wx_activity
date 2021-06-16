@@ -1,5 +1,6 @@
 // pages/Wdsh/wdsh.js
 const weChat = getApp()
+const util = require("../../utils/checkLogin")
 Page({
   /**
    * 页面的初始数据
@@ -9,6 +10,13 @@ Page({
     page: 1,
     size: 6
   },
+  toDetails(e) {
+    if(util.checkLogin()) {
+      wx.navigateTo({
+        url: '../activityDetails/activityDetails?a_id=' + e.currentTarget.dataset.id + "&flag=0", //flag标记页面时从审核页面跳转过来的
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,8 +24,20 @@ Page({
     //页面被加载时 初始化数据
     const u_id = wx.getStorageSync('userInfo').u_id
     weChat.request.getRequest({
-      url: '/getActivitys?page=' + this.data.page + "&size=" + this.data.size + "&u_id=" + (u_id == null?"":u_id)
+      url: '/getCheckActivity?page=' + this.data.page + "&size=" + this.data.size + "&u_id=" + (u_id == null?"":u_id) + "&number=0"
     }).then(res => {
+      if(res.code == 2012) {
+        wx.showModal({
+          title: '错误提示',
+          content: res.msg,
+          showCancel: false,
+          success(res) {
+            wx,wx.navigateBack({
+              delta: getCurrentPages().length - 1
+            })
+          }
+        })
+      }
       this.setData({
         activitys: res.data
       }) 

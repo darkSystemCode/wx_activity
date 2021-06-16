@@ -26,14 +26,14 @@ page {
   align-items: center;
 }
 
-.userInfo .avatar {
+.userInfo .avatar, .slot_applicant .avatar {
   width: 60px;
   height: 60px;
   border-radius: 8px;
   margin-right: 6px;
 }
 
-.userInfo .avatar image {
+.userInfo .avatar image, .slot_applicant .avatar image {
   width: 100%;
   height: 100%;
   border-radius: 8px;
@@ -44,7 +44,7 @@ page {
   font-size: 14px;
 }
 
-.btn {
+.button {
   position: fixed;
   bottom: 10px;
   left: 0;
@@ -54,9 +54,21 @@ page {
   margin: 0 auto;
 }
 
-.btn button {
+.button button {
   border-radius: 20px;
   background-color: #94C6F2;
   color: #000000;
+}
+
+.allChecked {
+  padding: 5px 16px 5px 0;
+  border-bottom: 1px dashed #cccccc;
+  text-align: right;
+}
+
+.slot_applicant {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 

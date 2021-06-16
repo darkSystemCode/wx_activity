@@ -16,16 +16,38 @@ Page({
       initiator: 'toms',
       initiator: 'hjx'
     },
+    slideButtons: [{
+      text: '审核'
+    }],
     wechat_name: '',
     wechat_avatar: '',
     a_id: '',
-    u_id: ''
+    u_id: '',
+    flag: -1, //标记页面的来源
+    disabled: false, //审核按钮的禁用状态
+    allChecked: false, //是否全选
+    showBtn: false, //是否显示审核报名者按钮
+    list_uid: []
   },
   //报名活动
   applyActivity(e) {
     weChat.request.getRequest({
       url: '/applyActivity/' + this.data.a_id + "?u_id=" + this.data.u_id
     }).then(res => {
+      //报名成功 更新报名者信息到页面显示
+      if(this.data.activitys.applicants == null) {
+        //如果没有报名者 applicants为object类型 需要转换为array类型
+        let array = new Array()
+        array.push(res.data[0])
+        this.setData({
+          'activitys.applicants': array
+        })
+      } else {
+        this.setData({
+          'activitys.applicants': this.data.activitys.applicants.push(res.data[0])
+        })
+      }
+      
       wx.showModal({
         title: '页面提示',
         content: res.msg,
@@ -33,11 +55,64 @@ Page({
       })
     })
   },
+  //审核活动
+  checkActivity() {
+    weChat.request.getRequest({
+      url: '/checkActivity/' + this.data.a_id
+    }).then(res => {
+      console.log(res)
+      if(res.code === 200) {
+        this.setData({
+          disabled: !this.data.disabled
+        })
+      }
+      wx.showModal({
+        title: '页面提示',
+        content: res.msg,
+        showCancel: false
+      })
+    })
+  },
+  //全选报名者
+  allChange(e) {
+    this.setData({
+      allChecked: !this.data.allChecked,
+      showBtn: !this.data.showBtn
+    })
+    //当且仅当 e.detail.value=false时，全部选中报名则 否则单选或者没选
+    //获取被选中的报名者信息
+    if(this.data.allChecked) {
+      for(let item of this.data.activitys.applicants) {
+        this.data.list_uid.push(item.u_id)
+      }
+    } else {
+      this.data.list_uid = []
+    }
+  },
+  //审核报名者
+  checkApplicant(e) {
+    //读取list_uid数组 审核报名者信息
+    weChat.request.getRequest({
+      url: '/checkApplicant?a_id=' + this.data.a_id + "&u_id=" + this.data.list_uid
+    }).then(res => {
+      if(res.code == 200) {
+        this.setData({
+          'activitys.applicants': res.data,
+          allChecked : false,
+          showBtn: false
+        })
+      }
+    })
+  },
+  u_idChecked(e) {
+    console.log("checked",e.detail.value)
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取登录用户缓存信息
     const userInfo = wx.getStorageSync('userInfo')
     if(options.a_id == null || options.a_id == '') {
       wx.showModal({
@@ -80,7 +155,8 @@ Page({
     })
     this.setData({
       a_id: options.a_id,
-      u_id: userInfo.u_id
+      u_id: userInfo.u_id,
+      flag: options.flag
     })
   },
 

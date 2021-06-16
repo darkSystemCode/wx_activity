@@ -1,6 +1,7 @@
 <!--pages/activity/activity.wxml-->
 <view>
-  <view wx:for="{{activitys}}" wx:key="index" wx:for-item="item">
+  <view>
+    <view wx:for="{{activitys}}" wx:key="index" wx:for-item="item">
     <view class="enti" bindtap="toDetails" data-id="{{item.a_id}}">
       <view class="top">
         <view class="left img" style="left">
@@ -28,5 +29,9 @@
 
   <view class="addBtn" bindtap="toAddActivty">
     <mp-icon icon="add" color="#94C6F2" size="{{25}}"></mp-icon>
+  </view>
+  </view>
+  <view wx:if="{{activitys.length == 0}}" class="notClass">
+    本来无一物，何处惹尘埃。
   </view>
 </view>

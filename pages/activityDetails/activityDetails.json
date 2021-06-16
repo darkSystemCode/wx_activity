@@ -5,6 +5,7 @@
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
     "mp-checkbox": "weui-miniprogram/checkbox/checkbox",
-    "mp-icon": "weui-miniprogram/icon/icon"
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "mp-slideview": "weui-miniprogram/slideview/slideview"
   }
 }

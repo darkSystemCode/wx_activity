@@ -1,26 +1,33 @@
 <!--pages/Wdsp/wdsp.wxml-->
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">审批结果：已通过</view>
-    </view>
-    <view class="enti">
-    <view class="top">
-      <view class="left img" style="left">
-        <image src=""></image>
-      </view>
-      <view class="right" style="right">
-        <view>
-          <text>活动标题</text>
+<view>
+  <view wx:if="{{activitys.lenght != 0}}">
+    <view wx:for="{{activitys}}" wx:key="index">
+    <view class="enti" bindtap="toDetails" data-id="{{item.a_id}}">
+      <view class="top">
+        <view class="left img" style="left">
+          <image src="{{item.img}}" mode="scaleToFill"></image>
         </view>
-        <view class="wenzi">
+        <view class="right" style="right">
           <view>
-            <text>起止时间：年/月/日/</text><text></text>
+            <text>{{item.title}}</text>
           </view>
-          <view>
-            <text>活动地点：</text><text></text>
+          <view class="wenzi">
+            <view>
+              <text>时间：</text><text>{{item.start_time}}</text>
+            </view>
+            <view>
+              <text>地点：</text><text>{{item.address}}</text>
+            </view>
           </view>
         </view>
       </view>
+      <view class="under">
+        <text>{{item.check_result}}</text>
+      </view>
     </view>
+  </view>
+  </view>
+  <view wx:else style="text-align: center; color: #a6a6a6">
+    <text>本来无一物，何处惹尘埃。</text>
   </view>
 </view>

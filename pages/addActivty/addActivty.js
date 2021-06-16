@@ -283,14 +283,17 @@ Page({
           }).then(res => {
             wx.showToast({
               title: res.msg,
-              icon: res.type
+              icon: res.type,
+              duration: 2000
             })
-            if (res.code == 200) {
-              //关闭当前页面 跳转到上一页面 详见https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html
-              wx.navigateBack({
-                delta: getCurrentPages().length - 1,
-              })
-            }
+            setTimeout(() => {
+              if (res.code == 200) {
+                //关闭当前页面 跳转到上一页面 详见https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html
+                wx.navigateBack({
+                  delta: getCurrentPages().length - 1,
+                })
+              }
+            }, 2000);
           }).catch(err => {
             wx.showToast({
               title: err.msg,

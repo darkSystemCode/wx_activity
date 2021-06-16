@@ -1,27 +1,32 @@
 <view>
-  <view wx:for="{{activitys}}" wx:key="index">
-    <view class="enti">
-      <view class="top">
-        <view class="left img" style="left">
-          <image src="{{item.img}}" mode="scaleToFill"></image>
-        </view>
-        <view class="right" style="right">
-          <view>
-            <text>{{item.title}}</text>
+  <view wx:if="{{activitys.length != 0}}">
+    <view wx:for="{{activitys}}" wx:key="index">
+      <view class="enti" bindtap="toDetails" data-id="{{item.a_id}}">
+        <view class="top">
+          <view class="left img" style="left">
+            <image src="{{item.img}}" mode="scaleToFill"></image>
           </view>
-          <view class="wenzi">
+          <view class="right" style="right">
             <view>
-              <text>时间：</text><text>{{item.start_time}}</text>
+              <text>{{item.title}}</text>
             </view>
-            <view>
-              <text>地点：</text><text>{{item.address}}</text>
+            <view class="wenzi">
+              <view>
+                <text>时间：</text><text>{{item.start_time}}</text>
+              </view>
+              <view>
+                <text>地点：</text><text>{{item.address}}</text>
+              </view>
             </view>
           </view>
         </view>
-      </view>
-      <view class="under">
-        <text>{{item.check_result}}</text>
+        <view class="under">
+          <text>{{item.check_result}}</text>
+        </view>
       </view>
     </view>
+  </view>
+  <view wx:else class="notClass">
+    本来无一物，何处惹尘埃。
   </view>
 </view>

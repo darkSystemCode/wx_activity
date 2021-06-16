@@ -45,7 +45,38 @@
     </mp-cell>
   </mp-cells>
 
-  <view class="btn">
-    <button size="default" type="primary" bindtap="applyActivity">立即报名</button>
+  <mp-cells title="活动报名者" wx:for="{{activitys.applicants}}" wx:key="index">
+    <view class="allChecked">
+      <checkbox-group bindchange="allChange">
+        <checkbox value="{{allChecked}}"></checkbox>
+      </checkbox-group>
+    </view>
+
+    <checkbox-group bindchange="u_idChecked">
+      <mp-cell>
+        <view slot="title" class="slot_applicant">
+          <view class="avatar">
+            <image src="{{item.avatar}}"></image>
+          </view>
+          <text>{{item.username}}</text>
+        </view>
+        <view slot="footer">
+          <checkbox wx:if="{{item.check_res_time == null}}" value="{{item.u_id}}" checked="{{allChecked}}"></checkbox>
+        </view>
+      </mp-cell>
+    </checkbox-group>
+    <!-- <mp-slideview buttons="{{slideButtons}}" bindbuttontap="checkApplicant">
+      <mp-cell value="左滑可以删除" footer="说明文字"></mp-cell>
+    </mp-slideview> -->
+  </mp-cells>
+
+  <view wx:if="{{showBtn}}" class="button">
+    <button size="default" type="primary" bindtap="checkApplicant">审核报名</button>
+  </view>
+  <view wx:else class="button">
+    <button wx:if="{{flag == 0}}" size="default" type="primary" bindtap="checkActivity" disabled="{{disabled}}"
+      style="background-color: #6B8DF2">审核</button>
+      <button wx:elif="{{flag !== 0}}" size="default" type="primary">{{activitys.status}}</button>
+    <button wx:if="{{activitys.status == '报名中'}}" size="default" type="primary" bindtap="applyActivity">立即报名</button>
   </view>
 </view>
