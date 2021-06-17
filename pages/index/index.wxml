@@ -1,4 +1,37 @@
 <!--pages/index/index.wxml-->
 <view>
-  <button bindtap="getUserProfile"> 获取头像昵称 </button>
+  <!--活动轮播--广告-->
+  <view>
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+      <block wx:for="{{img}}" wx:key="*this">
+        <swiper-item>
+          <view class="image">
+            <image src="{{item.url}}"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--个人数据分析-->
+  <view class="new_box">
+    <view class="title">最新推荐</view>
+    <view class="item">
+      <view class="sub_item">
+        <view>1</view>
+      </view>
+
+      <view class="sub_item">
+        <view>1</view>
+      </view>
+
+      <view class="sub_item">
+        <view>1</view>
+      </view>
+
+      <view class="sub_item">
+        <view>1</view>
+      </view>
+    </view>
+  </view>
 </view>

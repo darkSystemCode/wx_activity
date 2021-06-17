@@ -1,3 +1,6 @@
 {
+  "navigationBarTitleText": "我的审核",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "usingComponents": {}
 }

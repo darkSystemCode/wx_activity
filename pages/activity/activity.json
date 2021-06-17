@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "活动",
   "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "usingComponents": {
     "mp-icon": "weui-miniprogram/icon/icon"
   }

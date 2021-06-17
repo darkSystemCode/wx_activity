@@ -1,5 +1,34 @@
 /* pages/index/index.wxss */
-/* .login {
-  background-color: #07C160;
-  color: #FFFFFF
-} */
+.info_box {
+  box-shadow: 0 0 3px 0 #000000;
+}
+
+.info_box .line {
+  display: flex;
+  align-items: center;
+}
+
+
+.new_box {
+  padding: 16px;
+}
+
+.new_box .title {
+  font-weight: 800;
+}
+
+.new_box .item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.new_box .item .sub_item {
+  width: 50%;
+  height: 60px;
+}
+
+.new_box .item .sub_item view {
+  background-color: red;
+  margin: 6px;
+}

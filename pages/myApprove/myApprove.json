@@ -1,4 +1,7 @@
 {
+  "navigationBarTitleText": "我的审批",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "usingComponents": {
     
   }

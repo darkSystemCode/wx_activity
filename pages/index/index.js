@@ -5,59 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    args: {
-      withCredentials: true,
-      lang: 'zh_CN'
-    }
+    img: [{
+      url: "http://www2.scut.edu.cn/_upload/article/images/22/56/ae78a0724441b0f4e096bad86143/c6f85413-c023-46db-a5e3-78de4a5f9c64.jpg"
+    }, {
+      url: "http://pic.616pic.com/bg_w1180/00/04/71/w4XfbrApNQ.jpg!/fh/300"
+    }, {
+      url: "http://pic.616pic.com/bg_w1180/00/05/59/SqrZ6LQ6hq.jpg!/fh/300"
+    }],
+    activitys: [{
+      title: "CSDN最火Python",
+      img: 'http://uploadimg2.moore.ren/images/news/2018-12-04/214919.jpg'
+    }, {
+      title: "CSDN最火Python",
+      img: 'http://uploadimg2.moore.ren/images/news/2018-12-04/214919.jpg'
+    }]
   },
-  getUserProfile() {
-    wx.getUserProfile({
-      desc: '用于完善用户资料',
-      success: info => {
-        console.log(info)
-        //执行登录
-        wx.login({
-            success: res => {
-              if(res.code) {
-                //调用服务器登录接口
-                weChat.request.postRequest({
-                  url: "/login/wx_login",
-                  data: {
-                    code: res.code,
-                    username: info.userInfo.nickName
-                  }
-                }).then(res =>{
-                  wx.setStorageSync('openid', res.data.openid)
-                })
-              }
-            }
-        })
-      },
-      fail: err => {
-        console.log(err)
-      }
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 检查登录态
-    wx.checkSession({
-      success() {
-        //session未过期
-        console.log("1")
-      },
-      faile() {
-        console.log("2")
-        //session过期，提示手动登录
-        wx.showToast({
-          title: '登录已过期，请重新登录！',
-          duration: 3000
-        })
-      }
-    })
   },
 
   /**
